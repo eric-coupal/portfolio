@@ -30,7 +30,9 @@
     "title": "Under the hood",
     "intro": "A look inside the systems I work on, from Google Cloud and AWS infrastructure down to the code. The diagrams show the main building blocks, with no sensitive detail.",
     "showDiagram": "View diagram",
-    "hideDiagram": "Hide diagram"
+    "hideDiagram": "Hide diagram",
+    "showMore": "Show more ({n})",
+    "showLess": "Show less"
   },
   "projects": {
     "title": "Selected work",

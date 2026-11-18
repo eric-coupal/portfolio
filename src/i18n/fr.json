@@ -30,7 +30,9 @@
     "title": "Sous le capot",
     "intro": "Un aperçu des systèmes sur lesquels je travaille, de l'infrastructure Google Cloud et AWS jusqu'au code. Les schémas montrent les grands composants, sans détail sensible.",
     "showDiagram": "Voir le schéma",
-    "hideDiagram": "Masquer le schéma"
+    "hideDiagram": "Masquer le schéma",
+    "showMore": "Voir plus ({n})",
+    "showLess": "Voir moins"
   },
   "projects": {
     "title": "Réalisations",

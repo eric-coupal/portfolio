@@ -1,0 +1,120 @@
+---
+import ArchDiagram from './ArchDiagram.astro';
+import Tech from './Tech.astro';
+import { useTranslations, pick, type Lang } from '../i18n/utils';
+import type { Mission } from '../data/missions';
+import { resolveItem } from '../data/stack';
+
+interface Props {
+  mission: Mission;
+  lang: Lang;
+  /** Unique per page: used for the diagram's SVG ids. */
+  uid: string;
+}
+const { mission: m, lang, uid } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<article class="mcard rv">
+  <div class="top">
+    <span class="tag">{pick(lang, m.tag)}</span>
+    <span class="sector">{pick(lang, m.sector)}</span>
+  </div>
+  <h4>{pick(lang, m.title)}</h4>
+  <p class="text">{pick(lang, m.text)}</p>
+  <button class="dg-btn" type="button" aria-expanded="false" data-show={t.missions.showDiagram} data-hide={t.missions.hideDiagram}>
+    {t.missions.showDiagram}
+  </button>
+  <figure>
+    <div class="scroll-x">
+      <ArchDiagram diagram={m.diagram} lang={lang} uid={uid} />
+    </div>
+    <figcaption>{pick(lang, m.diagram.caption)}</figcaption>
+  </figure>
+  <div class="chips">
+    {m.chips.map((c) => <Tech {...resolveItem(c, lang)} />)}
+  </div>
+</article>
+
+<style>
+  .mcard {
+    min-width: 0; /* let .scroll-x scroll instead of the grid item growing to the diagram's min-width */
+    padding: clamp(20px, 3.5vw, 32px);
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) + 4px);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .sector {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+  h4 {
+    margin: 14px 0 0;
+    font-family: var(--display);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-size: clamp(21px, 2.6vw, 26px);
+  }
+  .text {
+    margin-top: 10px;
+    color: var(--muted);
+    max-width: 72ch;
+  }
+  figure {
+    margin: 24px 0 0;
+  }
+  /* Small screens: diagrams stay folded behind a button (only when JS runs, so they're never unreachable). */
+  .dg-btn {
+    display: none;
+    margin-top: 18px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+    background: transparent;
+    color: var(--fg);
+    font: 600 14px var(--sans);
+    cursor: pointer;
+  }
+  @media (max-width: 640px) {
+    :global(.js) .dg-btn {
+      display: inline-flex;
+    }
+    :global(.js) .mcard:not(.open) figure {
+      display: none;
+    }
+  }
+  .scroll-x {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  figcaption {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 18px;
+  }
+</style>

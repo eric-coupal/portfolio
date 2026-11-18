@@ -84,21 +84,21 @@ export const projects: Project[] = [
     stack: ['OpenShift', 'Azure', '3scale', 'jenkins'],
   },
   {
-    title: { fr: 'Migration du legacy vers Kubernetes', en: 'Legacy migration to Kubernetes' },
+    title: { fr: 'Migration du legacy vers OpenShift', en: 'Legacy migration to OpenShift' },
     context: { fr: 'Banque Populaire · Architecte applicatif · 2017 – 2018', en: 'Banque Populaire · Application Architect · 2017 – 2018' },
     problem: {
       fr: "Des applications legacy monolithiques, difficiles à faire évoluer et à exploiter.",
       en: 'Monolithic legacy applications that were hard to evolve and operate.',
     },
     work: {
-      fr: "Refonte en microservices et migration sur Kubernetes. Déploiement et configuration de Kafka pour les flux de données entre services.",
-      en: 'Re-architected them as microservices and migrated them to Kubernetes. Deployed and configured Kafka for data streaming between services.',
+      fr: "Refonte en microservices et migration sur OpenShift. Déploiement et configuration de Kafka pour les flux de données entre services.",
+      en: 'Re-architected them as microservices and migrated them to OpenShift. Deployed and configured Kafka for data streaming between services.',
     },
     result: {
       fr: 'Des services découplés, qui communiquent de façon fiable via Kafka.',
       en: 'Decoupled services that communicate reliably through Kafka.',
     },
-    stack: ['kubernetes', 'apachekafka', 'CQRS', 'Event sourcing'],
+    stack: ['OpenShift', 'apachekafka', 'CQRS', 'Event sourcing'],
   },
   {
     title: { fr: 'Plateforme IoT sur Kubernetes', en: 'IoT platform on Kubernetes' },

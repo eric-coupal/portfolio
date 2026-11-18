@@ -60,8 +60,8 @@ export const timeline: TimelineEntry[] = [
     role: { fr: 'Architecte applicatif', en: 'Application Architect' },
     org: 'Banque Populaire',
     summary: {
-      fr: "Migration d'applications legacy vers Kubernetes en microservices (CQRS, event sourcing), avec Kafka.",
-      en: 'Migration of legacy applications to Kubernetes as microservices (CQRS, event sourcing), with Kafka.',
+      fr: "Migration d'applications legacy vers OpenShift en microservices (CQRS, event sourcing), avec Kafka.",
+      en: 'Migration of legacy applications to OpenShift as microservices (CQRS, event sourcing), with Kafka.',
     },
   },
   {
