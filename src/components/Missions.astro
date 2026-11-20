@@ -64,9 +64,14 @@ const icons: Record<string, string> = {
 
     {
       missionGroups.map((g, gi) => (
-        <div class="group">
+        <div class="group" id={g.id}>
           <div class="group-head rv">
-            <h3>{pick(lang, g.label)}</h3>
+            <h3>
+              <a class="anchor" href={`#${g.id}`}>
+                {pick(lang, g.label)}
+                <span class="hash" aria-hidden="true">#</span>
+              </a>
+            </h3>
             <p>{pick(lang, g.intro)}</p>
           </div>
           <div class="cards">
@@ -115,6 +120,20 @@ const icons: Record<string, string> = {
   }
   .group-head h3 {
     font-size: clamp(20px, 2.4vw, 24px);
+  }
+  .anchor {
+    color: inherit;
+    text-decoration: none;
+  }
+  .hash {
+    margin-left: 0.3em;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .anchor:hover .hash,
+  .anchor:focus-visible .hash {
+    opacity: 1;
   }
   .group-head p {
     color: var(--muted);

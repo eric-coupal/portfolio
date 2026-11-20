@@ -52,6 +52,8 @@ export interface Mission {
 const same = (s: string): Localized => ({ fr: s, en: s });
 
 export interface MissionGroup {
+  /** Anchor id, same in every language, so /#<id> links straight to the group. */
+  id: string;
   label: Localized;
   intro: Localized;
   missions: Mission[];
@@ -672,11 +674,13 @@ const codeMissions: Mission[] = [
 
 export const missionGroups: MissionGroup[] = [
   {
+    id: 'platform',
     label: { fr: 'Côté plateforme', en: 'Platform side' },
     intro: { fr: 'Infrastructure cloud, réseau et observabilité, sur Google Cloud et AWS.', en: 'Cloud infrastructure, networking and observability across Google Cloud and AWS.' },
     missions: platformMissions,
   },
   {
+    id: 'code',
     label: { fr: 'Côté code', en: 'Code side' },
     intro: { fr: 'Des microservices Java orientés événements : flux de livraison, résilience et modèle de données.', en: 'Event-driven Java microservices: delivery flow, resilience and data model.' },
     missions: codeMissions,
